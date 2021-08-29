@@ -1,9 +1,44 @@
-<ion-header>
+<ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>statistics</ion-title>
+    <ion-title>
+        Statistics
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="4">
+            <ion-label color="primary">Last l/100km</ion-label>
+            <p>{{statistics.lastLPerHundredKm}}</p>
+          </ion-col>
+          <ion-col size="4">
+            <ion-label color="primary">Avg. l/100km</ion-label>
+            <p>{{statistics.avgLPerHundredKm}}</p>
+          </ion-col>
+          <ion-col size="4">
+            <ion-label color="primary">Best l/100km</ion-label>
+            <p>{{statistics.bestLPerHundredKm}}</p>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="4">
+          <ion-label color="primary">Total Distance</ion-label>
+          <p>{{statistics.totalKM}}</p>
+          </ion-col>
+          <ion-col size="4">
+            <ion-label color="primary">Total Cost$</ion-label>
+            <p>{{statistics.totalFuelCost}}</p>
+          </ion-col>
+          <ion-col size="4">
+              <ion-label color="primary">Total Liters</ion-label>
+              <p>{{statistics.totalLiters}}</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

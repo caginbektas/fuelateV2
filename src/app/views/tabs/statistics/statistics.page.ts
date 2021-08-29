@@ -10,19 +10,16 @@ import { StatisticsService } from 'src/app/services/tabs/statistics.service';
   styleUrls: ['./statistics.page.scss'],
 })
 export class StatisticsPage {
-
+  statistics: Statistics = new Statistics();
   constructor(
     private statisticsService: StatisticsService,
     public loadingController: LoadingController
   ) {}
 
-  fuelLogs: FuelLog[] = [];
-
   async ionViewDidEnter(){
     const loading = await this.loadingController.create();
     await loading.present();
-    let statistics = await this.statisticsService.getStatistics();
-    console.log(statistics);
+    this.statistics = await this.statisticsService.getStatistics();
     loading.dismiss();
   }
 }

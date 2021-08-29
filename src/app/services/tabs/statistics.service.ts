@@ -13,7 +13,6 @@ export class StatisticsService {
   getStatistics(): Promise<Statistics>{
     return new Promise(resolve => {
         this.firebaseService.getFuelLogs().then((fuelLogs: FuelLog[]) => {
-          console.log(fuelLogs)
           let statistics: Statistics = new Statistics(fuelLogs)
           resolve(statistics)
         })
