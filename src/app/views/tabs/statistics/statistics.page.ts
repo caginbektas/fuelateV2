@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { LoadingController } from '@ionic/angular';
-import { FuelLog } from 'src/app/entities/FuelLog';
 import { Statistics } from 'src/app/entities/Statistics';
 import { StatisticsService } from 'src/app/services/tabs/statistics.service';
 
