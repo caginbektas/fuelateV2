@@ -23,8 +23,6 @@ export class StatisticsPage {
     await loading.present();
     let statistics = await this.statisticsService.getStatistics();
     console.log(statistics);
-
-
     loading.dismiss();
   }
 }

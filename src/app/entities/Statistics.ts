@@ -8,7 +8,7 @@ export class Statistics{
     private _bestLPerHundredKm: string;
     private _totalFuelCost: string;
     private _totalLiters: string;
-    private _avgCityDrive: number;
+    private _avgCityDrive: string;
     private _fuelEfficiency: any;
     
     public get totalKM(): string {
@@ -29,7 +29,7 @@ export class Statistics{
     public get totalLiters(): string {
         return this._totalLiters;
     }
-    public get avgCityDrive(): number {
+    public get avgCityDrive(): string {
         return this._avgCityDrive;
     }
     public get fuelEfficiency(): any {
@@ -40,11 +40,11 @@ export class Statistics{
         this.fuelLogs = fuelLogs;
         this._totalKM = this.getTotalKM().toFixed(0);
         this._avgLPerHundredKm = this.getavgLPerHundredKm().toFixed(1);
-        //this._lastLPerHundredKm = this.getLastLPerHundredKm().toFixed(1);
+        this._lastLPerHundredKm = this.getLastLPerHundredKm().toFixed(1);
         this._bestLPerHundredKm = this.getBestLPerHundredKm().toFixed(1);
         this._totalFuelCost = this.getTotalFuelCost().toFixed(0);
         this._totalLiters = this.getTotalLiters().toFixed(0);
-        this._avgCityDrive = this.getAvgCityDrive();
+        this._avgCityDrive = this.getAvgCityDrive().toFixed(0);
         this._fuelEfficiency = this.fuelLogs.sort((a, b) => (a.date > b.date) ? 1 : -1).map(a => a.litersPerHundredKm);
     }
 
@@ -62,7 +62,7 @@ export class Statistics{
     }
     
     private getLastLPerHundredKm(){
-        return this.fuelLogs[this.fuelLogs.length-1];
+        return this.fuelLogs[this.fuelLogs.length-1].litersPerHundredKm;
     }
 
     private getBestLPerHundredKm(): number{
