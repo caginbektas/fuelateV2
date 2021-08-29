@@ -1,0 +1,7 @@
+{
+  "name": "fuelateV2",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
