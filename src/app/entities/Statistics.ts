@@ -10,6 +10,8 @@ export class Statistics{
     private _totalLiters: string;
     private _avgCityDrive: string;
     private _fuelEfficiency: any;
+    private _firstFuelDate: any;
+    private _lastFuelDate: any;
     
     public get totalKM(): string {
         return this._totalKM;
@@ -35,6 +37,12 @@ export class Statistics{
     public get fuelEfficiency(): any {
         return this._fuelEfficiency;
     }
+    public get firstFuelDate(): any {
+        return this._firstFuelDate;
+    }
+    public get lastFuelDate(): any {
+        return this._lastFuelDate;
+    }
 
     constructor(fuelLogs?: FuelLog[]){
         this.fuelLogs = fuelLogs;
@@ -46,6 +54,8 @@ export class Statistics{
         this._totalLiters = this.getTotalLiters()?.toFixed(0);
         this._avgCityDrive = this.getAvgCityDrive()?.toFixed(0);
         this._fuelEfficiency = this.fuelLogs?.sort((a, b) => (a.date > b.date) ? 1 : -1).map(a => a.litersPerHundredKm);
+        this._firstFuelDate = this.getFirstFuelDate();
+        this._lastFuelDate = this.getLastFuelDate();
     }
 
     private getTotalKM(){
@@ -87,5 +97,15 @@ export class Statistics{
         return this.fuelLogs?.reduce( function(a, b){
             return a + b['liter'];
         }, 0);
+    }
+
+    private getFirstFuelDate(){
+        if (this.fuelLogs)
+            return new Date(Number(this.fuelLogs[0].date)).toLocaleDateString();
+    }
+
+    private getLastFuelDate(){
+        if (this.fuelLogs)
+            return new Date(Number(this.fuelLogs[this.fuelLogs.length-1].date)).toLocaleDateString();
     }
 }

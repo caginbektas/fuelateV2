@@ -7,7 +7,7 @@ import { FirebaseService } from '../firebase.service';
   providedIn: 'root'
 })
 export class StatisticsService {
-
+  
   constructor(private firebaseService: FirebaseService) {}
 
   getStatistics(): Promise<Statistics>{
@@ -17,5 +17,14 @@ export class StatisticsService {
           resolve(statistics)
         })
     })
+  }
+
+  getLabels(statistics: Statistics){
+    let labels = Array(statistics.fuelEfficiency.length).fill('.')
+    if(labels && labels.length > 0){
+        labels[0] = statistics.firstFuelDate;
+        labels[labels.length-1] = statistics.lastFuelDate;
+    }
+    return labels;
   }
 }
